@@ -1,5 +1,5 @@
-import { Scene, AmbientLight, PerspectiveCamera, SphereGeometry, MeshBasicMaterial, Mesh, WebGLRenderer, PointLight } from 'three'
-import { Cube, ObjectAdder } from './objects';
+import { Scene, AmbientLight, PerspectiveCamera,  WebGLRenderer, PointLight } from 'three'
+import { ObjectAdder } from './objects';
 
 const sceneElement = document.getElementById('scene')
 const MainScene = new Scene()
@@ -23,8 +23,6 @@ MainScene.add(light)
 
 sceneElement.appendChild(renderer.domElement)
 renderer.setSize(sceneElement.offsetWidth, sceneElement.offsetHeight);
-
-// MainScene.add(new Cube().cube)
 
 const render = () => {
   requestAnimationFrame(render)
