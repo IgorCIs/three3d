@@ -7,7 +7,7 @@ const MainScene = new Scene()
 
 new ObjectAdder(MainScene)
 
-const camera = new PerspectiveCamera(75, sceneElement.offsetWidth / sceneElement.offsetHeight , 0.1, 1000 );
+const camera = new PerspectiveCamera(60, sceneElement.offsetWidth / sceneElement.offsetHeight , 0.1, 1000 );
 const renderer = new WebGLRenderer()
 camera.position.set(0, 0, 100)
 
