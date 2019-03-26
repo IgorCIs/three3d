@@ -1,10 +1,10 @@
 import v4 from 'uuid'
-import { BoxGeometry, MeshBasicMaterial, SphereGeometry, DoubleSide, RingGeometry, Mesh } from 'three';
+import { BoxGeometry, MeshBasicMaterial, MeshNormalMaterial, CylinderGeometry, SphereGeometry, DoubleSide, RingGeometry, Mesh } from 'three';
 import { random } from './random';
 
 class ObjectInterface {
   constructor() {
-    this.matherial = new MeshBasicMaterial({color: 0x00ff00})
+    this.matherial = new MeshNormalMaterial()
     this.scale = scale
   }
 }
@@ -25,21 +25,20 @@ class Sphere extends ObjectInterface {
   }
 }
 
-class Ring extends ObjectInterface {
+
+class Pyramide extends ObjectInterface {
   constructor(...props) {
     super(props)
-      this.geometry = new RingGeometry( 1, 5, 32 );
-      this.matherial = new MeshBasicMaterial( { color: 0xffff00, side: `DoubleSide` } );
-      this.object = new Mesh( this.geometry, this.material );
+    this.geometry = new CylinderGeometry(0, 4, 5, 4, 1)
+    this.object = new Mesh(this.geometry, this.material)
   }
 }
 
 const objects = {
   'sphere': Sphere,
   'cube': Cube,
-  'ring': Ring
+  'pyramide': Pyramide
 }
-
 
 class ObjectAdder {
   constructor(scene) {
