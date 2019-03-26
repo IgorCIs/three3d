@@ -58,7 +58,8 @@ class ObjectAdder {
 
     const initedObject = new objects[object]
     initedObject.object.name = v4()
-    initedObject.object.position.set(random(1, 100), random(1, 100), 0)
+    console.log(scene)
+    initedObject.object.position.set(random(-120, 120), random(-60, 60), 0)
     initedObject.object.scale.set(scale, scale, scale)
 
     scene.add(initedObject.object)

@@ -1,5 +1,6 @@
-import { Scene, AmbientLight, PerspectiveCamera,  WebGLRenderer, PointLight } from 'three'
+import { Scene, AmbientLight, HemisphereLight, PerspectiveCamera,  WebGLRenderer, PointLight } from 'three'
 import { ObjectAdder } from './objects';
+import OrbitControlls from 'three-orbitcontrols'
 
 const sceneElement = document.getElementById('scene')
 const MainScene = new Scene()
@@ -15,7 +16,9 @@ const light = new PointLight(0xffffff, 1, 10900, 2)
 
 const ambientLight = new AmbientLight( '#EEEEEE' )
 
-MainScene.add(ambientLight)
+const controlls = new OrbitControlls(camera, sceneElement)
+const hemiLight = new HemisphereLight( 0x0000ff, 0x00ff00, 0.6 ); 
+MainScene.add(ambientLight, hemiLight)
 
 
 light.position.set(50, 50, 50)
@@ -26,6 +29,7 @@ renderer.setSize(sceneElement.offsetWidth, sceneElement.offsetHeight);
 
 const render = () => {
   requestAnimationFrame(render)
+  controlls.update()
   renderer.render(MainScene, camera)
 }
 
